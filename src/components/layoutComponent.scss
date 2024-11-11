@@ -1,0 +1,113 @@
+$colorFondoBars: #F17E31;
+$colorFondoPagina: #AE5215;
+$bordeNavbar: #00000080;
+
+.header{
+    background-color: $colorFondoBars;
+    border-bottom: 3px solid $bordeNavbar;
+
+    &__navbar{
+        padding: 1.3rem;
+        position: sticky;
+        top: 0;
+        left: 0;
+        &__page-logo{
+            display: inline-block;
+
+            &__image{
+                width: 175px;
+            }
+        }
+
+        &__button-hamburger{
+            border: none;
+            background-color: transparent;
+            position: absolute;
+            right: 5%;
+            top: 27%;
+            .button-hamburger__image{
+                width: 40px;
+            }
+        }
+
+        &__link-list{
+            display: none;
+            list-style: none;
+            .link-list__link{
+
+                &__text{
+                    text-decoration: none;
+                    color: white;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                &__text.active{
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+
+
+.mostrar_menu{
+    width: 100%;
+    padding: .8rem 1.3rem;
+    background-color: $colorFondoBars;
+    border-bottom: 3px solid $bordeNavbar;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+
+.main{
+    width: 100%;
+    padding: 2rem 1rem;
+    min-height: 81.2vh;
+    //83.4 para escritorio
+    background-image: linear-gradient($colorFondoPagina 0%, black 95%);
+}
+
+.footer{
+    background-color: $colorFondoBars;
+    padding: 1rem .5rem;
+
+    &__text{
+        font-size: .8rem;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .header{
+        
+        &__navbar{
+            padding-left: 4rem;
+            padding-right: 4rem;
+            display: flex;
+            justify-content: space-between;
+            &__button-hamburger{
+                display: none;
+            }
+    
+            &__link-list{
+                width: 40%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .link-list__link{
+                    
+                    &__text{
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .main{
+        min-height: 83.4vh;
+    }
+}
