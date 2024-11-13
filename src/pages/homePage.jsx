@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import './homePage.scss'
+import './imagesDisplayer.scss'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { searchList, searchListStatus } from '../features/search/searchSlice';
 import { getSearchThunk } from '../features/search/searchThunk';
 import { useEffect } from 'react';
 import { PhotoSmallDescription } from '../components/photoSmallDescription';
-import { useRef } from 'react';
+import { favouriteList } from '../features/favorites/favoritesSlice';
 
 
 export const HomePage = () => {
@@ -18,6 +18,8 @@ export const HomePage = () => {
 
     const photoList = useSelector(searchList);
     const photoStatus = useSelector(searchListStatus);
+
+    const favoriteListData = useSelector(favouriteList);
 
     const photoColumns = 4;
 
@@ -49,8 +51,8 @@ export const HomePage = () => {
 
         photoListData.forEach((photo, index) => {
             columns[i].push(<PhotoSmallDescription key={index} height={photo.height} width={photo.width}
-                id={photo.id} likes={photo.likes} pulishDate={photo.created_at} section={"home-photo"}
-                imgURL={photo.urls.regular} />);
+                id={photo.id} likes={photo.likes} publishDate={photo.created_at} section={"home-photo"}
+                imgURL={photo.urls.regular} fileName={photo.slug + ".jpg"} description={photo.description} />);
 
             countOfPhotos++;
             if (countOfPhotos >= maxPhotosPerColumn) {
@@ -64,6 +66,8 @@ export const HomePage = () => {
     }
 
     const columns = organizePhotosInGrid();
+
+    console.log(favoriteListData);
 
     return (
         <section className="home">
