@@ -1,7 +1,7 @@
 $colorPrincipal: #F17E31;
 
 
-.home {
+.home, .search {
     text-align: center;
 
     &__title {
@@ -41,10 +41,10 @@ $colorPrincipal: #F17E31;
 }
 
 @media screen and (min-width: 1000px){
-    .home{
+    .home, .search{
         &__photo-grid{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            display: flex;
+            justify-content: space-between;
             gap: 1.5rem;
         }
     }
