@@ -1,0 +1,51 @@
+.photo-container {
+  width: 100%;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+}
+.photo-container__image {
+  width: 100%;
+}
+.photo-container__description {
+  width: 100%;
+  padding: 0.1rem 0.4rem;
+  background-color: #AE5215;
+  border: 3px black solid;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photo-container__description__data .description__data__text {
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+.photo-container__description__data .description__data__text__number {
+  font-weight: 300;
+}
+.photo-container__description__data .description__data__text--total-likes {
+  margin-right: 2rem;
+}
+.photo-container__description__buttons .description__button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.photo-container__description__buttons .description__button--like {
+  font-size: 1.3rem;
+  margin-right: 0.3rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .photo-container__description {
+    padding: 0.5rem 0.4rem;
+  }
+  .photo-container__description__data .description__data__text--total-likes {
+    margin-right: 4rem;
+  }
+}/*# sourceMappingURL=photoSmallDescription.css.map */
