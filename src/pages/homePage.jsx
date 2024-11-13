@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './imagesDisplayer.scss'
+import './imagesDisplayer.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { searchList, searchListStatus } from '../features/search/searchSlice';

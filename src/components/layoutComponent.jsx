@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import imagenAbrirMenu from '../assets/menu.svg';
 import imagenCerrarMenu from '../assets/closeMenu.svg';
 import { NavLink } from "react-router-dom";
-import './layoutComponent.scss'
+import './layoutComponent.css'
 import { useRef } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
