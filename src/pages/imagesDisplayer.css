@@ -1,18 +1,18 @@
-.home, .search {
+.home, .results {
   text-align: center;
 }
-.home__title, .search__title {
+.home__title, .results__title {
   font-size: 2rem;
   color: white;
   margin-bottom: 2.5rem;
 }
-.home__spinner-box, .search__spinner-box {
+.home__spinner-box, .results__spinner-box {
   width: 100%;
   position: absolute;
   top: 45%;
   left: 0;
 }
-.home__spinner-box__loader, .search__spinner-box__loader {
+.home__spinner-box__loader, .results__spinner-box__loader {
   width: 48px;
   height: 48px;
   border: 5px solid #FFF;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-  .home__photo-grid, .search__photo-grid {
+  .home__photo-grid, .results__photo-grid {
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
