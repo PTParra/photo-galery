@@ -28,7 +28,7 @@ export const PhotoSmallDescription = ({ width, height, likes, id, publishDate, i
 
     const addToFavorites = () => {
         const date = new Date(publishDate);
-        const formattedDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        const formattedDate = date.getDate() + "/" + ((date.getMonth() + 1).toString().padStart(2, "0")) + "/" + date.getFullYear();
         const newFavorite = {
             id: id,
             width: width,
@@ -55,7 +55,7 @@ export const PhotoSmallDescription = ({ width, height, likes, id, publishDate, i
     const removeFromFavorites = () => {
         setIsFavorite(false);
         dispatch(removeFavorite(id));
-        toast.info('Eliminado de favoritos!', {
+        toast.error('Eliminado de favoritos', {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,

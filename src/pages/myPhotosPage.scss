@@ -1,0 +1,56 @@
+$colorPrincipal: #F17E31;
+
+.my-photos{
+    text-align: center;
+
+    &__title{
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    &__subtitle{
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    &__description-input{
+        background-color: #ffffff7F;
+        border: 2px solid black;
+        border-radius: 96px;
+        width: 60%;
+        padding: .5rem 1rem;
+        margin-bottom: 3.5rem;
+        margin-right: 1rem;
+        color: white;
+    }
+
+    &__orderby-bar{
+        background-color: $colorPrincipal;
+        color: white;
+        border: 1px solid black;
+        border-radius: 3px;
+        padding: .5rem 0;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .my-photos{
+    
+        &__title{
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        &__subtitle{
+            font-size: 1.4rem;
+        }
+
+        &__description-input{
+            width: 45%;
+        }
+
+        &__orderby-bar{
+            padding-left: .3rem;
+            padding-right: 1.5rem;
+        }
+    }
+}
