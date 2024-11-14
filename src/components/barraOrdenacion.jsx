@@ -13,7 +13,7 @@ export const BarraOrdenacion = ({className, functionToUse}) => {
             <option value="">Ordenar Por:</option>
             <option value="width">Anchura</option>
             <option value="height">Altura</option>
-            <option value="date">Fecha de Publicación</option>
+            <option value="date">Fecha</option>
             <option value="likes">Me gusta</option>
         </select>
     )

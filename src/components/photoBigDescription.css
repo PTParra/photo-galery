@@ -1,0 +1,131 @@
+.big-photo-container {
+  margin-bottom: 3em;
+}
+.big-photo-container__attributes {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.big-photo-container__attributes__title {
+  text-align: right;
+  font-size: 1.5rem;
+}
+.big-photo-container__attributes__value {
+  text-align: left;
+  font-size: 1.1rem;
+}
+.big-photo-container__attributes__value--description {
+  width: 80%;
+}
+.big-photo-container__attributes__buttons {
+  grid-column: 2 span;
+}
+.big-photo-container__attributes__buttons .attributes__buttons__button {
+  background-color: #F17E31;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-right: 0.9rem;
+  cursor: pointer;
+}
+.big-photo-container__attributes__buttons .attributes__buttons__button--delete {
+  margin-right: 0;
+}
+.big-photo-container__attributes__edit-description-form {
+  grid-column: 2 span;
+}
+.big-photo-container__attributes__edit-description-form__text-area {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.4980392157);
+  border: 2px solid black;
+  padding: 1rem;
+  color: white;
+  font-size: 0.9em;
+}
+.big-photo-container__attributes__edit-description-form__button {
+  background-color: #F17E31;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-right: 0.9rem;
+  cursor: pointer;
+}
+.big-photo-container__attributes__edit-description-form__button--cancel {
+  margin: 0;
+}
+.big-photo-container__image-container {
+  width: 100%;
+}
+.big-photo-container__image-container__image {
+  width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+  .big-photo-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+  }
+  .big-photo-container__attributes {
+    width: 40%;
+    gap: 1.5rem;
+  }
+  .big-photo-container__attributes__title {
+    font-size: 1.8rem;
+  }
+  .big-photo-container__attributes__value {
+    font-size: 1.3rem;
+  }
+  .big-photo-container__attributes__value--description {
+    width: 65%;
+  }
+  .big-photo-container__attributes__buttons .attributes__buttons__button {
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin-right: 1.2rem;
+  }
+  .big-photo-container__attributes__buttons .attributes__buttons__button--delete {
+    margin-right: 0;
+  }
+  .big-photo-container__attributes__edit-description-form__text-area {
+    width: 60%;
+    margin-bottom: 1.5rem;
+    font-size: 1em;
+  }
+  .big-photo-container__attributes__edit-description-form__button {
+    font-size: 1.1rem;
+    border-radius: 10px;
+    padding: 0.1rem 3.5rem;
+    margin-right: 0.9rem;
+  }
+  .big-photo-container__attributes__edit-description-form__button--cancel {
+    margin: 0;
+  }
+  .big-photo-container__image-container {
+    width: 30%;
+  }
+}
+.hideContainer {
+  display: none;
+}
+
+.hideValueWithOpacity {
+  opacity: 0;
+}
+
+.disabledButton {
+  background-color: black !important;
+}/*# sourceMappingURL=photoBigDescription.css.map */

@@ -66,7 +66,6 @@ $bordeNavbar: #00000080;
     width: 100%;
     padding: 2rem 1rem;
     min-height: 81.2vh;
-    //83.4 para escritorio
     background-image: linear-gradient($colorFondoPagina 0%, black 95%);
 }
 
@@ -110,5 +109,11 @@ $bordeNavbar: #00000080;
     .main{
         min-height: 83.4vh;
         padding: 2rem 8rem;
+    }
+
+    .mostrar_menu{
+        position: static;
+        border: none;
+        left: 0;
     }
 }

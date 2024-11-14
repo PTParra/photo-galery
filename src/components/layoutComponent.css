@@ -87,4 +87,9 @@
     min-height: 83.4vh;
     padding: 2rem 8rem;
   }
+  .mostrar_menu {
+    position: static;
+    border: none;
+    left: 0;
+  }
 }/*# sourceMappingURL=layoutComponent.css.map */

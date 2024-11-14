@@ -13,7 +13,7 @@ export const favoritesSlice = createSlice({
             updateLocalStorage(state.data);
         },
         editFavorite: (state, action) => {
-            let indexToModify = state.data.indexOf(action.payload);
+            let indexToModify = state.data.indexOf(state.data.find(favorite => favorite.id === action.payload.id));
             state.data[indexToModify].description = action.payload.description;
             updateLocalStorage(state.data);
         },
