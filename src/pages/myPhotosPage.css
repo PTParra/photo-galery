@@ -20,6 +20,17 @@
   margin-right: 1rem;
   color: white;
 }
+.my-photos__description-input::-moz-placeholder {
+  color: white;
+  opacity: 1;
+}
+.my-photos__description-input::placeholder {
+  color: white;
+  opacity: 1;
+}
+.my-photos__description-input:-ms-input-placeholder {
+  color: white;
+}
 .my-photos__orderby-bar {
   background-color: #F17E31;
   color: white;

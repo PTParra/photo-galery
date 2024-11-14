@@ -24,6 +24,15 @@ $colorPrincipal: #F17E31;
         color: white;
     }
 
+    &__description-input::placeholder{
+        color: white;
+        opacity: 1;
+    }
+
+    &__description-input:-ms-input-placeholder{
+        color: white;
+    }
+
     &__orderby-bar{
         background-color: $colorPrincipal;
         color: white;
