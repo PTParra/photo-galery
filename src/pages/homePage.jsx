@@ -37,6 +37,11 @@ export const HomePage = () => {
         }
     }, [photoList, photoStatus])
 
+    useEffect(() => {
+        if(photoList.length === 0)
+            dispatch(getSearchThunk());
+    }, [photoListData])
+
 
     const organizePhotosInGrid = () => {
         const columns = [];

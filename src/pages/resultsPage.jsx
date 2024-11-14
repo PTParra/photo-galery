@@ -15,7 +15,7 @@ export const ResultsPage = () => {
 
     const { searchTerm } = useParams();
 
-    
+
     const [photoListData, setPhotoListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -80,7 +80,7 @@ export const ResultsPage = () => {
         return columns;
     }
 
-    const orderPhotos =  (order) => {
+    const orderPhotos = (order) => {
         let tempArray = [...photoListData];
 
         const columns = [];
@@ -98,7 +98,7 @@ export const ResultsPage = () => {
                 tempArray = tempArray.sort((photoA, photoB) => photoB[order] - photoA[order]);
                 break;
             case "date":
-                tempArray = tempArray.sort((photoA, photoB) => 
+                tempArray = tempArray.sort((photoA, photoB) =>
                     new Date(photoA.created_at).getTime() - new Date(photoB.created_at).getTime()
                 );
                 break;
@@ -110,7 +110,7 @@ export const ResultsPage = () => {
         tempArray.forEach(photo => {
             columns[i].push(photo);
             i++;
-            if(i >= columns.length)
+            if (i >= columns.length)
                 i = 0;
         })
 
@@ -127,7 +127,7 @@ export const ResultsPage = () => {
     const columns = organizePhotosInGrid();
 
 
-    return(
+    return (
         <section className="results">
             <h1 className="results__title">{searchTerm === "aleatorio" ? "Fotos aleatorias" : "Resultados de: " + searchTerm}</h1>
             <div className='results__photos'>
@@ -135,16 +135,17 @@ export const ResultsPage = () => {
                     isLoading ?
                         <div className='results__photos__spinner-box'>
                             <span className="results__photos__spinner-box__loader"></span>
-                        </div> : <>
-                        <BarraOrdenacion functionToUse={orderPhotos} className={"results__photos__orderBy-select"} />
-                        <div className="results__photos__grid">
-                            {columns.map((column, index) => (
-                                <div key={index} className='results__photos__grid__column'>
-                                    {column}
-                                </div>
-                            ))}
-                        </div>
-                        </>
+                        </div> : 
+                        photoListData.length > 0 ? <>
+                            <BarraOrdenacion functionToUse={orderPhotos} className={"results__photos__orderBy-select"} />
+                            <div className="results__photos__grid">
+                                {columns.map((column, index) => (
+                                    <div key={index} className='results__photos__grid__column'>
+                                        {column}
+                                    </div>
+                                ))}
+                            </div>
+                        </> : <p className="results__photos__no-photos">No hay resultados para esta busqueda</p>
                 }
             </div>
         </section>
