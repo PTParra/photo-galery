@@ -51,6 +51,11 @@ $colorPrincipal: #F17E31;
             padding: .5rem;
             padding-right: 4.5rem;
         }
+
+        &__no-photos{
+            color: white;
+            font-size: 1.1em;
+        }
     }
 }
 
@@ -70,6 +75,11 @@ $colorPrincipal: #F17E31;
                 margin-bottom: 2.4rem;
                 padding: .5rem;
                 padding-right: 24.5rem;
+            }
+
+            &__no-photos{
+                color: white;
+                font-size: 1.3em;
             }
         }
     }
