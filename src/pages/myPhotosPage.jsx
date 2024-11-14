@@ -87,11 +87,12 @@ export const MyPhotosPage = () => {
     return (
         <section className="my-photos">
             <h1 className="my-photos__title">Mis Fotos</h1>
-            {favoritesListData.length > 0 ?
+            {favoritesData.length > 0 ?
                 <>
-                    <input value={descriptionFilter} className='my-photos__description-input' type="text" onChange={handleInputChange} />
+                    <input placeholder='Filtrar por Descripcion' value={descriptionFilter} className='my-photos__description-input' type="text" onChange={handleInputChange} />
                     <BarraOrdenacion functionToUse={handleOrderChange} className={'my-photos__orderby-bar'} />
-                    {favoritesListData.map((favorite, index) =>
+
+                    {favoritesListData.length > 0 ? favoritesListData.map((favorite, index) => 
                         <PhotoBigDescription key={index}
                             description={favorite.description}
                             fileName={favorite.fileName}
@@ -101,9 +102,11 @@ export const MyPhotosPage = () => {
                             imgURL={favorite.imgURL}
                             likes={favorite.likes}
                             publishDate={favorite.publishDate}
-                        />)}
+                        />) : 
+                        <p className='my-photos__subtitle'>No hay fotos que cumplan el parametro propocionado: {descriptionFilter}</p>
+                    }
                 </>
-                : <p className='my-photos__subtitle'>{warningText}</p>
+                : <p className='my-photos__subtitle'>No tienes fotos en favoritos</p>
             }
         </section>
     )
