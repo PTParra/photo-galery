@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import './imagesDisplayer.css'
+import './homePage.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { searchList, searchListStatus } from '../features/search/searchSlice';
 import { getSearchThunk } from '../features/search/searchThunk';
 import { useEffect } from 'react';
 import { PhotoSmallDescription } from '../components/photoSmallDescription';
-import { favouriteList } from '../features/favorites/favoritesSlice';
 
 
 export const HomePage = () => {
@@ -19,21 +18,22 @@ export const HomePage = () => {
     const photoList = useSelector(searchList);
     const photoStatus = useSelector(searchListStatus);
 
-    const favoriteListData = useSelector(favouriteList);
-
     const photoColumns = 4;
 
     useEffect(() => {
-        if (photoStatus === "idle") {
-            dispatch(getSearchThunk())
-        }
-        else if (photoStatus === "pending") {
-            setIsLoading(true)
-        }
-        else if (photoStatus === "fulfilled") {
-            setIsLoading(false)
-            setPhotoListData(photoList)
-            organizePhotosInGrid();
+        switch (photoStatus) {
+            case "idle":
+                dispatch(getSearchThunk());
+                break;
+            case "pending":
+                setIsLoading(true);
+                break;
+            case "fulfilled":
+                setIsLoading(false);
+                setPhotoListData(photoList);
+                break;
+            default:
+                break;
         }
     }, [photoList, photoStatus])
 
@@ -66,8 +66,6 @@ export const HomePage = () => {
     }
 
     const columns = organizePhotosInGrid();
-
-    console.log(favoriteListData);
 
     return (
         <section className="home">
