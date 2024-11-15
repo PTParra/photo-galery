@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-import { PhotoBigDescription } from '../components/photoBigDescription'
+import { PhotoBigDescription } from '../../components/photoBigDescription/photoBigDescription';
 import './myPhotosPage.css'
-import { favouriteList } from '../features/favorites/favoritesSlice';
+import { favouriteList } from '../../features/favorites/favoritesSlice';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { BarraOrdenacion } from '../components/barraOrdenacion';
 
 
 export const MyPhotosPage = () => {
@@ -59,8 +58,13 @@ export const MyPhotosPage = () => {
             {favoritesData.length > 0 ?
                 <>
                     <input placeholder='Filtrar por Descripcion' value={descriptionFilter} className='my-photos__description-input' type="text" onChange={handleInputChange} />
-                    <BarraOrdenacion functionToUse={handleOrderChange} className={'my-photos__orderby-bar'} />
-
+                    <select onChange={handleOrderChange} className='my-photos__orderby-bar'>
+                        <option value="">Ordenar Por:</option>
+                        <option value="width">Anchura</option>
+                        <option value="height">Altura</option>
+                        <option value="date">Fecha</option>
+                        <option value="likes">Me gusta</option>
+                    </select>
                     {favoritesListData.length > 0 ? favoritesListData.map((favorite) =>
                         <PhotoBigDescription key={favorite.id}
                             description={favorite.description}

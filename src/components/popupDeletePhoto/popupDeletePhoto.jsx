@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { removeFavorite } from '../features/favorites/favoritesSlice';
+import { removeFavorite } from '../../features/favorites/favoritesSlice';
 import './popupDeletePhoto.css';
 import { useDispatch } from 'react-redux';
 

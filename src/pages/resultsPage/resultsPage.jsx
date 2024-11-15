@@ -3,11 +3,10 @@ import './resultsPage.css'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getSearchThunk } from "../features/search/searchThunk";
-import { searchList, searchListStatus } from "../features/search/searchSlice";
+import { getSearchThunk } from "../../features/search/searchThunk";
+import { searchList, searchListStatus } from "../../features/search/searchSlice";
 import { useEffect } from "react";
-import { PhotoSmallDescription } from "../components/photoSmallDescription";
-import { BarraOrdenacion } from "../components/barraOrdenacion";
+import { PhotoSmallDescription } from "../../components/photoSmallDescription/photoSmallDescription";
 
 
 
@@ -90,21 +89,18 @@ export const ResultsPage = () => {
         }
 
         let i = 0;
-
-        switch (order) {
-            case "width":
-            case "height":
-            case "likes":
+        
+        if(order !== ''){
+            if (order === 'date') {
+            tempArray = tempArray.sort((photoA, photoB) =>
+                new Date(photoA.created_at).getTime() - new Date(photoB.created_at).getTime()
+            );
+            }else{
                 tempArray = tempArray.sort((photoA, photoB) => photoB[order] - photoA[order]);
-                break;
-            case "date":
-                tempArray = tempArray.sort((photoA, photoB) =>
-                    new Date(photoA.created_at).getTime() - new Date(photoB.created_at).getTime()
-                );
-                break;
-            default:
-                setPhotoListData(photoList);
-                return;
+            }
+        }else{
+            setPhotoListData(photoList);
+            return;
         }
 
         tempArray.forEach(photo => {
@@ -137,7 +133,13 @@ export const ResultsPage = () => {
                             <span className="results__photos__spinner-box__loader"></span>
                         </div> : 
                         photoListData.length > 0 ? <>
-                            <BarraOrdenacion functionToUse={orderPhotos} className={"results__photos__orderBy-select"} />
+                            <select onChange={(event) => orderPhotos(event.target.value)} className="results__photos__orderBy-select">
+                                <option value="">Ordenar Por:</option>
+                                <option value="width">Anchura</option>
+                                <option value="height">Altura</option>
+                                <option value="date">Fecha</option>
+                                <option value="likes">Me gusta</option>
+                            </select>
                             <div className="results__photos__grid">
                                 {columns.map((column, index) => (
                                     <div key={index} className='results__photos__grid__column'>

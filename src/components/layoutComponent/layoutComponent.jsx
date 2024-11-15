@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom"
 import logoPagina from '/Logo.svg'
 import { Link } from "react-router-dom"
-import imagenAbrirMenu from '../assets/menu.svg';
-import imagenCerrarMenu from '../assets/closeMenu.svg';
+import imagenAbrirMenu from '../../assets/menu.svg';
+import imagenCerrarMenu from '../../assets/closeMenu.svg';
 import { NavLink } from "react-router-dom";
 import './layoutComponent.css'
 import { useRef } from "react";
