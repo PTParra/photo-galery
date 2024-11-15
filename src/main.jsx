@@ -15,7 +15,7 @@ import { MyPhotosPage } from './pages/myPhotosPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/photo-galery'>
       <Routes>
         <Route path='/' element={<LayoutComponent />}>
           <Route path='' element={<HomePage />} />
