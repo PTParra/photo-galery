@@ -68,10 +68,8 @@ export const MyPhotosPage = () => {
                 break;
             case "date":
                 tempArray = tempArray.sort((photoA, photoB) => {
-                    const [dayB, monthB, yearB] = photoB.publishDate.split('/').map(Number);
-                    const dateB = new Date(yearB, monthB - 1, dayB).getTime();
-                    const [dayA, monthA, yearA] = photoA.publishDate.split('/').map(Number);
-                    const dateA = new Date(yearA, monthA - 1, dayA).getTime();
+                    const dateB = new Date(photoB.publishDate).getTime();
+                    const dateA = new Date(photoA.publishDate).getTime();
                     return dateB - dateA;
                 }
 
