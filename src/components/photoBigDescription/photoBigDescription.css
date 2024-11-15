@@ -117,15 +117,4 @@
   .big-photo-container__image-container {
     width: 30%;
   }
-}
-.hideContainer {
-  display: none;
-}
-
-.hideValueWithOpacity {
-  opacity: 0;
-}
-
-.disabledButton {
-  background-color: black !important;
 }/*# sourceMappingURL=photoBigDescription.css.map */

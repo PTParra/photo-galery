@@ -2,7 +2,7 @@ import { FaDownload } from "react-icons/fa";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import './photoSmallDescription.css';
 import { useDispatch } from "react-redux";
-import { addFavorite, favouriteList, removeFavorite } from "../features/favorites/favoritesSlice";
+import { addFavorite, favouriteList, removeFavorite } from "../../features/favorites/favoritesSlice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { toast } from "react-toastify";

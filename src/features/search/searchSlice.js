@@ -10,7 +10,11 @@ export const searchSlice = createSlice({
         error: null,
         data: []
     },
-    reducers: {},
+    reducers: {
+        newPetition: (state, action) => {
+            state.status = "idle"
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getSearchThunk.pending, (state, action) => {
             state.status = "pending";
@@ -24,6 +28,7 @@ export const searchSlice = createSlice({
     }
 })
 
+export const { newPetition } = searchSlice.actions
 
 export const searchList = (state) => state.search.data
 export const searchListStatus = (state) => state.search.status

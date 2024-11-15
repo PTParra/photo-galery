@@ -2,10 +2,10 @@ import { useState } from 'react'
 import './homePage.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { searchList, searchListStatus } from '../features/search/searchSlice';
-import { getSearchThunk } from '../features/search/searchThunk';
+import { newPetition, searchList, searchListStatus } from '../../features/search/searchSlice';
+import { getSearchThunk } from '../../features/search/searchThunk';
 import { useEffect } from 'react';
-import { PhotoSmallDescription } from '../components/photoSmallDescription';
+import { PhotoSmallDescription } from '../../components/photoSmallDescription/photoSmallDescription';
 
 
 export const HomePage = () => {
@@ -39,7 +39,7 @@ export const HomePage = () => {
 
     useEffect(() => {
         if(photoList.length === 0)
-            dispatch(getSearchThunk());
+            dispatch(newPetition());
     }, [photoListData])
 
 

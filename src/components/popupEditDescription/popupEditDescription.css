@@ -1,0 +1,98 @@
+.popup-edit {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4980392157);
+  border: none;
+}
+.popup-edit__container {
+  z-index: 2;
+  background-color: #AE5215;
+  color: white;
+  width: 75%;
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.popup-edit__container__title {
+  font-size: 2rem;
+  margin-bottom: 1.1rem;
+}
+.popup-edit__container__image {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+.popup-edit__container__edit-description-form__text-area {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.4980392157);
+  border: 2px solid black;
+  padding: 1rem;
+  color: white;
+  font-size: 0.9em;
+}
+.popup-edit__container__edit-description-form__button {
+  background-color: #F17E31;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-right: 0.9rem;
+  cursor: pointer;
+}
+.popup-edit__container__edit-description-form__button--cancel {
+  margin: 0;
+}
+.popup-edit__container__button {
+  background-color: #F17E31;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+.popup-edit__container__button--cancel {
+  margin: 0;
+}
+.popup-edit__background-close-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .popup-edit__container {
+    width: 35%;
+  }
+  .popup-edit__container__title {
+    font-size: 3rem;
+    margin-bottom: 1.1rem;
+  }
+  .popup-edit__container__image {
+    width: 60%;
+    margin-bottom: 2rem;
+  }
+  .popup-edit__container__edit-description-form__text-area {
+    width: 70%;
+  }
+}/*# sourceMappingURL=popupEditDescription.css.map */
