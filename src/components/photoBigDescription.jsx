@@ -21,6 +21,10 @@ export const PhotoBigDescription = ({ width, height, likes, id, publishDate, img
 
     const modifyButtonRef = useRef(null);
 
+    const date = new Date(publishDate);
+
+    const formattedDate = ((date.getDate()).toString().padStart(2, "0")) + "/" + ((date.getMonth() + 1).toString().padStart(2, "0")) + "/" + date.getFullYear();
+
     const handleChange = (event) => {
         setDescriptionValue(event.target.value);
     }
@@ -65,7 +69,7 @@ export const PhotoBigDescription = ({ width, height, likes, id, publishDate, img
                 <h3 className='big-photo-container__attributes__title'>Me gusta:</h3>
                 <p className='big-photo-container__attributes__value'>{likes}</p>
                 <h3 className='big-photo-container__attributes__title'>Publicada el:</h3>
-                <p className='big-photo-container__attributes__value'>{publishDate}</p>
+                <p className='big-photo-container__attributes__value'>{formattedDate}</p>
                 <div className='big-photo-container__attributes__buttons'>
                     <button onClick={downloadPhoto} className='attributes__buttons__button' type='button'>
                         Descargar

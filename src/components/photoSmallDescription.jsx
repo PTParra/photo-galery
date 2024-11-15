@@ -27,15 +27,13 @@ export const PhotoSmallDescription = ({ width, height, likes, id, publishDate, i
     }
 
     const addToFavorites = () => {
-        const date = new Date(publishDate);
-        const formattedDate = date.getDate() + "/" + ((date.getMonth() + 1).toString().padStart(2, "0")) + "/" + date.getFullYear();
         const newFavorite = {
             id: id,
             width: width,
             height: height,
             likes: likes,
             imgURL: imgURL,
-            publishDate: formattedDate,
+            publishDate: publishDate,
             fileName: fileName,
             description: description === null ? "No se ha proporcionado una descripción" : description
         }
