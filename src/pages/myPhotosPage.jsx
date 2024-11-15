@@ -17,69 +17,40 @@ export const MyPhotosPage = () => {
 
     const [favoritesListData, setFavoritesListData] = useState(favoritesData);
 
-    const [warningText, setWarningText] = useState("");
-
-    useEffect(() => {
-        setFavoritesListData(favoritesData);
-        ordenarValores();
-        filtarPorDescripcion()
-    }, [favoritesData]);
-
-    useEffect(() => ordenarValores(), [orderBy]);
-
-    useEffect(() => filtarPorDescripcion(), [descriptionFilter]);
-
-    useEffect(() => {
-        if (favoritesData.length === 0) {
-            setWarningText("No tienes fotos en favoritos");
-        } else if (favoritesListData.length === 0) {
-            setWarningText("No hay fotos que cumplan el parametro propocionado: " + descriptionFilter);
-        }
-    }, [favoritesListData]);
 
     const handleOrderChange = (order) => {
         setOrderBy(order);
-        ordenarValores();
     }
 
     const handleInputChange = (event) => {
         setDescriptionFilter(event.target.value);
-        filtarPorDescripcion();
     }
 
-    const filtarPorDescripcion = () => {
-        if (descriptionFilter !== "")
-            setFavoritesListData(favoritesData.filter(favorite => favorite.description.toLowerCase().includes(descriptionFilter.toLowerCase())));
-        else
-            setFavoritesListData(favoritesData);
-    }
+    const ordenarFiltrarValores = () => {
 
+        let tempArrayFavorites = favoritesData;
 
-
-    const ordenarValores = () => {
-
-        let tempArray = [...favoritesListData];
-
-        switch (orderBy) {
-            case "width":
-            case "height":
-            case "likes":
-                tempArray = tempArray.sort((photoA, photoB) => photoB[orderBy] - photoA[orderBy]);
-                break;
-            case "date":
-                tempArray = tempArray.sort((photoA, photoB) => {
-                    const dateB = new Date(photoB.publishDate).getTime();
-                    const dateA = new Date(photoA.publishDate).getTime();
-                    return dateB - dateA;
-                }
-
-                );
-                break;
-            default:
-                return;
+        if (descriptionFilter !== "") {
+            tempArrayFavorites = favoritesData.filter(favorite => favorite.description.toLowerCase().includes(descriptionFilter.toLowerCase()));
         }
-        setFavoritesListData(tempArray);
+
+
+        if (orderBy !== "") {
+            tempArrayFavorites = [...tempArrayFavorites].sort((favoriteA, favoriteB) => {
+                if (orderBy === 'date') {
+                    return new Date(favoriteB.publishDate) - new Date(favoriteA.publishDate);
+                }
+                return favoriteB[orderBy] - favoriteA[orderBy];
+            });
+        }
+        
+
+        setFavoritesListData(tempArrayFavorites);
     }
+
+    useEffect(() => {
+        ordenarFiltrarValores();
+    }, [favoritesData, orderBy, descriptionFilter]);
 
 
     return (
@@ -90,8 +61,8 @@ export const MyPhotosPage = () => {
                     <input placeholder='Filtrar por Descripcion' value={descriptionFilter} className='my-photos__description-input' type="text" onChange={handleInputChange} />
                     <BarraOrdenacion functionToUse={handleOrderChange} className={'my-photos__orderby-bar'} />
 
-                    {favoritesListData.length > 0 ? favoritesListData.map((favorite, index) => 
-                        <PhotoBigDescription key={index}
+                    {favoritesListData.length > 0 ? favoritesListData.map((favorite) =>
+                        <PhotoBigDescription key={favorite.id}
                             description={favorite.description}
                             fileName={favorite.fileName}
                             width={favorite.width}
@@ -100,7 +71,7 @@ export const MyPhotosPage = () => {
                             imgURL={favorite.imgURL}
                             likes={favorite.likes}
                             publishDate={favorite.publishDate}
-                        />) : 
+                        />) :
                         <p className='my-photos__subtitle'>No hay fotos que cumplan el parametro propocionado: {descriptionFilter}</p>
                     }
                 </>
