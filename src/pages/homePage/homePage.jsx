@@ -9,7 +9,6 @@ import { PhotoSmallDescription } from '../../components/photoSmallDescription/ph
 
 
 export const HomePage = () => {
-
     const [photoListData, setPhotoListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 

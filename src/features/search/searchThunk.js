@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const key = '8-DERz12s0jDsyXe9fdk2kd9TpI9LPO7dK-aV3FCqYg';
-
 export const getSearchThunk = createAsyncThunk('search/getSearchList', async (params = "") =>{
 
     const baseURL = 'https://api.unsplash.com/';
@@ -18,7 +16,7 @@ export const getSearchThunk = createAsyncThunk('search/getSearchList', async (pa
         const response = await fetch(urlToUse, {
             method: 'GET',
             headers: {
-                'Authorization': `Client-ID ${key}`
+                'Authorization': `Client-ID ${import.meta.env.VITE_UNSPLASH_KEY}`
             }
         });
         if(response.ok){

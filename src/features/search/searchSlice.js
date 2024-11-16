@@ -12,6 +12,7 @@ export const searchSlice = createSlice({
     },
     reducers: {
         newPetition: (state, action) => {
+            
             state.status = "idle"
         }
     },
