@@ -25,7 +25,7 @@ export const ResultsPage = () => {
 
     const maxPhotoColumns = 4;
 
-    let actualColumns;
+    let realColumns;
 
     useEffect(() => {
         switch (photoStatus) {
@@ -51,30 +51,66 @@ export const ResultsPage = () => {
     }, [searchTerm])
 
 
-    const organizePhotosInGrid = () => {
+    const organizePhotosInGridDesktop = () => {
         const columns = [];
 
-        for (let index = 0; index < maxPhotoColumns; index++) {
+        let i = maxPhotoColumns;
+
+        while (i > 1) {
+            if(photoListData.length % i === 0){
+                realColumns = i;
+                break;
+            }
+            i--;
+        }
+        
+        for (let index = 0; index < realColumns; index++) {
             columns[index] = [];
         }
 
-        let i = 0;
-        let countOfPhotos = 0;
-        const maxPhotosPerColumn = photoListData.length / columns.length;
+        i = 0;
+        //let countOfPhotos = 0;
+        //const maxPhotosPerColumn = Math.ceil(photoListData.length / columns.length);
 
         photoListData.forEach((photo, index) => {
             columns[i].push(<PhotoSmallDescription key={index} height={photo.height} width={photo.width}
                 id={photo.id} likes={photo.likes} publishDate={photo.created_at} section={"home-photo"}
                 imgURL={photo.urls.regular} fileName={photo.slug + ".jpg"} description={photo.description} />);
+            i++;
+            if (i >= columns.length){
+                i = 0;
+            }
+                
+        })
 
+        return columns;
+    }
+
+    const organizePhotosInGridMobile = () => {
+        const columns = [];
+
+        let i = maxPhotoColumns;
+        
+        
+        for (let index = 0; index < realColumns; index++) {
+            columns[index] = [];
+        }
+
+        i = 0;
+        let countOfPhotos = 0;
+        const maxPhotosPerColumn = Math.ceil(photoListData.length / columns.length);
+
+        photoListData.forEach((photo, index) => {
+            columns[i].push(<PhotoSmallDescription key={index} height={photo.height} width={photo.width}
+                id={photo.id} likes={photo.likes} publishDate={photo.created_at} section={"home-photo"}
+                imgURL={photo.urls.regular} fileName={photo.slug + ".jpg"} description={photo.description} />);
             countOfPhotos++;
-            if (countOfPhotos >= maxPhotosPerColumn) {
+            if (countOfPhotos === maxPhotosPerColumn){
                 i++;
                 countOfPhotos = 0;
             }
+                
         })
-
-        actualColumns = columns.filter(column => column.length > 0).length;
 
         return columns;
     }
@@ -82,14 +118,6 @@ export const ResultsPage = () => {
     const orderPhotos = (order) => {
         let tempArray = [...photoListData];
 
-        const columns = [];
-
-        for (let index = 0; index < actualColumns; index++) {
-            columns[index] = [];
-        }
-
-        let i = 0;
-        
         if(order !== ''){
             if (order === 'date') {
             tempArray = tempArray.sort((photoA, photoB) =>
@@ -98,29 +126,15 @@ export const ResultsPage = () => {
             }else{
                 tempArray = tempArray.sort((photoA, photoB) => photoB[order] - photoA[order]);
             }
-        }else{
-            setPhotoListData(photoList);
-            return;
         }
 
-        tempArray.forEach(photo => {
-            columns[i].push(photo);
-            i++;
-            if (i >= columns.length)
-                i = 0;
-        })
-
-        let output = [];
-
-        for (let index = 0; index < columns.length; index++) {
-            output = output.concat(columns[index]);
-        }
-
-
-        setPhotoListData(output);
+        setPhotoListData(tempArray);
     }
 
-    const columns = organizePhotosInGrid();
+    const columns = organizePhotosInGridDesktop();
+    const columnsMobile = organizePhotosInGridMobile();
+
+    console.log(columns);
 
 
     return (
@@ -142,7 +156,12 @@ export const ResultsPage = () => {
                             </select>
                             <div className="results__photos__grid">
                                 {columns.map((column, index) => (
-                                    <div key={index} className='results__photos__grid__column'>
+                                    <div key={index} className='results__photos__grid__column desktop'>
+                                        {column}
+                                    </div>
+                                ))}
+                                {columnsMobile.map((column, index) => (
+                                    <div key={index} className='results__photos__grid__column mobile'>
                                         {column}
                                     </div>
                                 ))}
