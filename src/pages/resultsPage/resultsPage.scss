@@ -56,6 +56,13 @@ $colorPrincipal: #F17E31;
             color: white;
             font-size: 1.1em;
         }
+
+        &__grid{
+
+            &__column.desktop{
+                display: none;
+            }
+        }
     }
 }
 
@@ -67,6 +74,14 @@ $colorPrincipal: #F17E31;
                 display: flex;
                 justify-content: space-between;
                 gap: 1.5rem;
+
+                &__column.desktop{
+                    display: block;
+                }
+                
+                &__column.mobile{
+                    display: none;
+                }
             }
 
             &__orderBy-select{

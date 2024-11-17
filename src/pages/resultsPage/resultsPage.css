@@ -44,12 +44,21 @@
   color: white;
   font-size: 1.1em;
 }
+.results__photos__grid__column.desktop {
+  display: none;
+}
 
 @media screen and (min-width: 1000px) {
   .results__photos__grid {
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
+  }
+  .results__photos__grid__column.desktop {
+    display: block;
+  }
+  .results__photos__grid__column.mobile {
+    display: none;
   }
   .results__photos__orderBy-select {
     font-size: 1.25rem;
