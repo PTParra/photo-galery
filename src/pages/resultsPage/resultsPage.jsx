@@ -134,8 +134,6 @@ export const ResultsPage = () => {
     const columns = organizePhotosInGridDesktop();
     const columnsMobile = organizePhotosInGridMobile();
 
-    console.log(columns);
-
 
     return (
         <section className="results">

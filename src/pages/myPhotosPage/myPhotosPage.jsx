@@ -18,7 +18,7 @@ export const MyPhotosPage = () => {
 
 
     const handleOrderChange = (order) => {
-        setOrderBy(order);
+        setOrderBy(order.target.value);
     }
 
     const handleInputChange = (event) => {
